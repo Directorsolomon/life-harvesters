@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Life Harvesters Family - A Christ-centered NGO dedicated to transforming lives through spiritual nourishment and practical support">
+    <title>Life Harvesters Family</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #166534;
+            --secondary-color: #1f2937;
+            --text-color: #333;
+            --light-bg: #f8fafc;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Improved accessibility for focus states */
+        a:focus, button:focus {
+            outline: 3px solid #4CAF50;
+            outline-offset: 2px;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(22, 101, 52, 0.9), rgba(22, 163, 74, 0.9)), url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Buttons */
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            margin: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .button-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .button-primary:hover {
+            background: #f0fdf4;
+            transform: translateY(-2px);
+        }
+
+        .button-secondary {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .button-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Impact Counter Section */
+        .impact-counter {
+            padding: 4rem 1rem;
+            background: var(--light-bg);
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .counter-item {
+            padding: 2rem;
+        }
+
+        .counter-number {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .counter-label {
+            font-size: 1.1rem;
+            color: #4b5563;
+        }
+
+        /* Featured Projects */
+        .featured-projects {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .project-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .project-content li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .project-content li::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Services section */
+        .services {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 4rem 1rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: #f3f4f6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 0.25rem 0;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 1024px) {
+            .counter-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .button {
+                display: block;
+                margin: 1rem auto;
+                max-width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .counter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Skip to main content link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 1001;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <a href="#" class="logo" aria-label="Life Harvesters Family Home">Life Harvesters Family</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span>☰</span>
+            </button>
+            <div class="nav-links">
+                <a href="#about" aria-label="About Us">About Us</a>
+                <a href="#services" aria-label="Our Work">Our Work</a>
+                <a href="#projects" aria-label="Projects">Projects</a>
+                <a href="#contact" aria-label="Contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main" role="main">
+        <section class="hero" role="banner">
+            <h1>Transforming Lives Through Christ's Love</h1>
+            <p>Welcome to Life Harvesters Family, where faith meets action. We are a Christ-centered NGO dedicated to transforming lives through spiritual nourishment and practical support. Join us in spreading hope, love, and positive change in communities.</p>
+            <div>
+                <a href="#donate" class="button button-primary" role="button" aria-label="Donate Now">Donate Now</a>
+                <a href="#volunteer" class="button button-secondary" role="button" aria-label="Get Involved">Get Involved</a>
+            </div>
+        </section>
+
+        <section class="impact-counter" role="region" aria-label="Impact Statistics">
+            <div class="counter-grid">
+                <div class="counter-item" data-aos="fade-up">
+                    <div class="counter-number" aria-label="Number of families supported">500+</div>
+                    <div class="counter-label">Families Supported</div>
+                </div>
+                <div class="counter-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="counter-number" aria-label="Number of lives touched">1000+</div>
+                    <div class="counter-label">Lives Touched</div>
+                </div>
+                <div class="counter-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="counter-number" aria-label="Number of communities reached">20+</div>
+                    <div class="counter-label">Communities Reached</div>
+                </div>
+                <div class="counter-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="counter-number" aria-label="Number of active projects">15</div>
+                    <div class="counter-label">Active Projects</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-projects" id="projects" role="region" aria-label="Featured Projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" 
+                         alt="Hearts of Hope Documentary - People gathering in community" 
+                         class="project-image"
+                         loading="lazy"
+                         width="800"
+                         height="400">
+                    <div class="project-content">
+                        <h3>Hearts of Hope Documentary</h3>
+                        <ul>
+                            <li>Transforming lives in Akwa Ibom</li>
+                            <li>Real stories of hope and change</li>
+                            <li>Watch how $500 creates lasting impact</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=80" 
+                         alt="Community Outreach Programs - Group of volunteers helping others" 
+                         class="project-image"
+                         loading="lazy"
+                         width="800"
+                         height="400">
+                    <div class="project-content">
+                        <h3>Community Outreach Programs</h3>
+                        <ul>
+                            <li>Prison ministry initiatives</li>
+                            <li>School support programs</li>
+                            <li>Hospital visitation impact</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="services" role="region" aria-label="Our Services">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up">
+                    <h3>Prison Ministry</h3>
+                    <p>Providing spiritual support, rehabilitation programs, and re-integration assistance for inmates.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>School Service</h3>
+                    <p>Supporting education through mentorship programs, educational support, and resource provision.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Hospital Service</h3>
+                    <p>Offering patient visitation, prayer support, and practical assistance to those in medical care.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#" aria-label="Read Our Story">Our Story</a></li>
+                    <li><a href="#" aria-label="Learn about our Vision and Mission">Vision & Mission</a></li>
+                    <li><a href="#" aria-label="Discover our Core Values">Core Values</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Our Work</h3>
+                <ul>
+                    <li><a href="#" aria-label="Learn about our Prison Ministry">Prison Ministry</a></li>
+                    <li><a href="#" aria-label="Learn about our School Service">School Service</a></li>
+                    <li><a href="#" aria-label="Learn about our Hospital Service">Hospital Service</a></li>
+                    <li><a href="#" aria-label="Learn about our Street Evangelism">Street Evangelism</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Get Involved</h3>
+                <ul>
+                    <li><a href="#" aria-label="Make a Donation">Donate</a></li>
+                    <li><a href="#" aria-label="Become a Volunteer">Volunteer</a></li>
+                    <li><a href="#" aria-label="Partner with Us">Partner with Us</a></li>
+                    <li><a href="#" aria-label="Submit Prayer Requests">Prayer Requests</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#" aria-label="Send us an Email">Email Us</a></li>
+                    <li><a href="#" aria-label="Find our Location">Location</a></li>
+                    <li><a href="#" aria-label="Follow us on Social Media">Social Media</a></li>
+                    <li><a href="#" aria-label="Subscribe to our Newsletter">Newsletter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Life Harvesters Family. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+
+            // Mobile menu functionality
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuBtn && navLinks) {
+                menuBtn.addEventListener('click', () => {
+                    const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+                    menuBtn.setAttribute('aria-expanded', !isExpanded);
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
